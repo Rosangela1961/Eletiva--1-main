@@ -24,7 +24,7 @@
         elseif($valor == "-")
             echo "<p>Sinal de subtração!</p>";
         
-        elseif(valor == "*")
+        elseif($alor == "*")
             echo "<p>Sinal de multiplicação!</p>";
         elseif($valor == "/"){
             echo "<p>Sinal de divisão!</p>";
@@ -33,7 +33,7 @@
             echo "<p> Sinal Inválido!</p>";
         }
 
-    } */
+    }/*/
 
         switch($valor){
             case "+":
