@@ -21,8 +21,8 @@
 </form>
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $preco = $_POST[ 'valor1'];
-    $per_desconto = $_POST['valor2'];
+    $preco = floatval($_POST[ 'valor1']);
+    $per_desconto = floatval($_POST['valor2']);
     $preco_desc= $preco - ($preco * $per_desconto) / 100;
     echo "O preço com desconto é: $preco_desc";
 
