@@ -11,7 +11,6 @@
 <h1>exercicio 5</h1>
 <form method="post">
 <div class="mb-3">
-<<<<<<< HEAD
               <label for="nota1" class="form-label">insira a nota 1</label>
               <input type="number" id="nota1" name="nota1" class="form-control">
             </div>
@@ -21,7 +20,6 @@
             </div>
             <div class="mb-3">
               <label for="nota3" class="form-label">insira nota 3</label>
-=======
               <label for="nota1 " class="form-label">insira a nota 1</label>
               <input type="number" id="nota1" name="nota1" class="form-control">
             </div><div class="mb-3">
@@ -29,7 +27,6 @@
               <input type="number" id="nota2" name="nota2" class="form-control">
             </div><div class="mb-3">
               <label for="nota 3" class="form-label">insira nota 3</label>
->>>>>>> 19ee820a3324b1b0ae21035c40150615a00d0ce5
               <input type="number" id="nota3" name="nota3" class="form-control">
             </div>
 <button type="submit" class="btn btn-primary">Enviar</button>
