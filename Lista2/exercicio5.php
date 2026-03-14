@@ -11,14 +11,16 @@
 <h1>exercicio 5</h1>
 <form method="post">
 <div class="mb-3">
-              <label for="nota1 " class="form-label">insira a nota 1</label>
-              <input type="number" id="nota1 " name="nota1 " class="form-control">
-            </div><div class="mb-3">
-              <label for="nota 2" class="form-label">insira a nota 2</label>
-              <input type="number" id="nota 2" name="nota 2" class="form-control">
-            </div><div class="mb-3">
-              <label for="nota 3" class="form-label">insira nota 3</label>
-              <input type="number" id="nota 3" name="nota 3" class="form-control">
+              <label for="nota1" class="form-label">insira a nota 1</label>
+              <input type="number" id="nota1" name="nota1" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="nota2" class="form-label">insira a nota 2</label>
+              <input type="number" id="nota2" name="nota2" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="nota3" class="form-label">insira nota 3</label>
+              <input type="number" id="nota3" name="nota3" class="form-control">
             </div>
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
