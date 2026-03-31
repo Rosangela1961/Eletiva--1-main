@@ -17,14 +17,14 @@
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entrada = $_POST['palavra'];
     $saida = strrev($entrada);
 
     echo "A palavra original é: $entrada <p>";
-    echo "A palavra invertida é: $saida <p>";
+    echo "A palavra invertida é $saida <p>";
 }
+
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </div>
