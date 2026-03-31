@@ -3,28 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Exercicio 4</title>
+<title>Exercicio 9</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
 </head>
 <body> 
 <div class="container py-3">
-<h1>Exercicio 4</h1>
+<h1>Exercicio 9</h1>
 <form method="post">
 <div class="mb-3">
-              <label for="valor1" class="form-label">Inserir um valor de produto</label>
-              <input type="number" id="valor1" name="valor1" class="form-control" required="">
+              <label for="valor" class="form-label">Informe um número</label>
+              <input type="number" id="valor" name="valor" class="form-control" required="">
             </div>
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $valorProduto = $_POST['valor1'];
-    if($valorProduto > 100){
-        $desconto = $valorProduto * 15/100;
-        $novoValor = $valorProduto - $desconto;
-        echo "O novo valor do produto é: $novoValor";
-    }else{
-        echo "O produto não atingiu o valor mínimo para desconto";
+    $valor = $_POST['valor'];
+    $fatorial = 1;
+
+    if ($valor >= 0){
+        for ($i = 1; $i <= $valor; $i++){
+
+            $fatorial*= $i;
+        }
+
+        echo "Fatorial de $valor é: $fatorial";
+    } else{
+        echo "Digite um valor válido";
     }
 }
 ?>
