@@ -17,7 +17,7 @@
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
-if($_SERVER['RESQUEST_METHOD'] == "POST"){
+if($_SERVER['REQUEST_METHOD'] == "POST"){
     $quilometros = $_POST['valor1'];
     $milhas = $quilometros * 0.621371;
     echo "O resultado em milhas é: $milhas";
