@@ -20,7 +20,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $frase = $_POST['frase'];
     $padrao = "/[aeiouáéíóúãõâêîôû]/i";
-    $quantidade = preg_match_all($padrao, $frase, $mtches);
+    $quantidade = preg_match_all($padrao, $frase, $matches);
     echo "A frase é: $frase<p>";
     echo "A frase possui $quantidade vogais.<p>";
 }
