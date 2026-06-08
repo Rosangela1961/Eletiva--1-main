@@ -43,12 +43,12 @@
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
                 try{
-                  $stmt = $pdo->prepare("SELECT * FROM usuariok WHERE email = ?"); 
+                  $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?"); 
                   $stmt->execute([$email]);
-                  $usuario = $stmt->fetch();
-                  $senha_correta = password_verify($senha, $usuario['senha']);
-                  if($usuario && $senha_correta){
-                    $_SESSION['nome'] = $usuario['nome'];
+                  $usuarios = $stmt->fetch();
+                  $senha_correta = password_verify($senha, $usuarios['senha']);
+                  if($usuarios && $senha_correta){
+                    $_SESSION['nome'] = $usuarios['nome'];
                     $_SESSION['acesso'] = true;
                     header('Location: principal.php');
                     } else{

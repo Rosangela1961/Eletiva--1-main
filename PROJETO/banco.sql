@@ -15,9 +15,9 @@ CREATE SCHEMA IF NOT EXISTS `projetophp` DEFAULT CHARACTER SET utf8 ;
 USE `projetophp` ;
 
 -- -----------------------------------------------------
--- Table `projetophp`.`usuario`
+-- Table `projetophp`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `projetophp`.`usuario` (
+CREATE TABLE IF NOT EXISTS `projetophp`.`usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `nome` VARCHAR(255) NOT NULL,

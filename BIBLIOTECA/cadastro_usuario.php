@@ -1,16 +1,21 @@
+<?php
+// Ativa a exibição de erros para nos ajudar se algo falhar
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cadastro</title>
+  <title>Biblioteca - Criar Conta</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-    <h3 class="text-center mb-4">Cadastro</h3>
+  <div class="card shadow p-4" style="width: 100%; max-width: 400px; border-radius: 15px;">
+    <h3 class="text-center mb-4 fw-bold text-primary">🏛️ Criar Conta</h3>
 
     <form method="post">
       <div class="mb-3">
@@ -28,7 +33,7 @@
         <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" required>
       </div>
 
-      <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+      <button type="submit" class="btn btn-success w-100 fw-bold">Cadastrar</button>
     </form>
 
     <?php
@@ -37,22 +42,22 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+        
         try{
-          $stmt = $pdo->prepare('INSERT INTO usuarios (nome, email, senha)
-                                  VALUES (? , ?, ?);');
+          $stmt = $pdo->prepare('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?);');
           if($stmt->execute([$nome, $email, $senha])){
-            echo "<p>Cadastro realizado! Faça o login!</p>";
+            echo "<div class='alert alert-success text-center mt-3 py-2'>Cadastro realizado! Faça o login!</div>";
           } else {
-            echo "<p>Erro ao cadastrar! Tente novamente</p>";
+            echo "<div class='alert alert-danger text-center mt-3 py-2'>Erro ao cadastrar! Tente novamente.</div>";
           }
         } catch(Exception $e){
-          echo "Erro: ".$e->getMessage();
+          echo "<div class='alert alert-danger text-center mt-3 py-2'>Erro: ".$e->getMessage()."</div>";
         }
       }
     ?>
 
-    <p class="text-center mt-3">
-      Já tem conta? <a href="index.php">Faça login</a>
+    <p class="text-center mt-3 mb-0">
+      Já tem conta? <a href="index.php" class="fw-bold">Faça login</a>
     </p>
   </div>
 </div>

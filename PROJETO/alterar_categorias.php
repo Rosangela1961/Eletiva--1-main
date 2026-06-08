@@ -12,7 +12,7 @@
                         echo "<p>Cadastro realizado!</p>";
 
                       }  else {
-                        $mensagem "<p>Erro ao cadstrar! Tente novamente</p>";
+                        $mensagem "<p>Erro ao cadastrar! Tente novamente</p>";
                     }
                 } catch(Exception $e){
 
@@ -21,7 +21,7 @@
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch()
 
-    } catch (Excepction $e){
+    }catch (Excepction $e){
         echo "Erro: ".$e->getMessage();
     }
 ?>

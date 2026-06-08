@@ -1,8 +1,8 @@
 <?php
 
-    $dominio = "mysql:host=localhost;dbname=projetophp";//primeiro parâmetro
+    $dominio = "mysql:host=localhost:3308;dbname=phpprojeto";//primeiro parâmetro
     $usuario = "root";
-    $senha = "Rose@2509";
+    $senha = "";
 
     try {
         $pdo = new PDO($dominio, $usuario, $senha);
