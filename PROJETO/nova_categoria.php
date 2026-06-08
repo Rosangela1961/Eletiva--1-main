@@ -1,6 +1,24 @@
 <?php
-    require_once('cabelho.php');
-?>
+    <?php
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                require_once('conexao.php');
+                $nome = $_POST['nome'];
+                
+                try{
+                    $stmt = $pdo->prepare('INSERT INTO categoria (nome) VALUES (?);');
+                    if($stmt->execute([$nome])){
+                        echo "<p>Cadastro realizado!</p>";
+
+                      }  else {
+                        echo "<p>Erro ao cadstrar! Tente novamente</p>";
+                    }
+                } catch(Exception $e){
+
+                  echo "Erro: ".$e->getMessage();
+                }
+        }
+            
+    ?>
 
 
 
@@ -14,4 +32,4 @@
     </form>    
 <?php
     require_once('rodape.php');
-?>        
+       

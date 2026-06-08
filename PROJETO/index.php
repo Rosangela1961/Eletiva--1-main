@@ -31,25 +31,33 @@
                     <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
                 <div class="text-center mt-3">
-                    <p class="small">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                    <p class="small">Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
                 </div>
 
             </form>
 
             <?php
+               require_once('conexao.php'); 
                session_start(); 
                if ($_SERVER["REQUEST_METHOD"] == 'POST'){
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
-                if($email == "adm@adm" && $senha == '123'){
-                    $_SESSION['nome'] = 'Administrador';
+                try{
+                  $stmt = $pdo->prepare("SELECT * FROM usuariok WHERE email = ?"); 
+                  $stmt->execute([$email]);
+                  $usuario = $stmt->fetch();
+                  $senha_correta = password_verify($senha, $usuario['senha']);
+                  if($usuario && $senha_correta){
+                    $_SESSION['nome'] = $usuario['nome'];
                     $_SESSION['acesso'] = true;
-                    header('Location:  principal.php');
-                } else {
-                    $_SESSION['acesso'] = false;
-                    echo "<p> class= 'text-danger'Email e/ou senha incorretos!</p>";
+                    header('Location: principal.php');
+                    } else{
+                        echo "<p class='text-danger'>Credenciais inválidas!</p>";
+                    } 
+                } catch(Exception $e){
+                    echo "Erro:". $e ->getMessage();
                 }
-
+                
                } 
             ?>
         </div>

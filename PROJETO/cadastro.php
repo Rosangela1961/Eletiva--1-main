@@ -1,44 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Sistema</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f8f9fa; }
-        .register-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .card { width: 100%; max-width: 450px; border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 
-<div class="container register-container">
-    <div class="card p-4">
-        <div class="card-body">
-            <h3 class="text-center mb-4">Criar Conta</h3>
-            <form action="processa_cadastro.php" method="POST">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
-                </div>
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Crie uma senha forte" required>
-                </div>
-                <div class="d-grid gap-2 mt-4">
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
-                </div>
-                <div class="text-center mt-3">
-                    <p class="small">Já possui conta? <a href="login.html">Voltar ao login</a></p>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+    <h3 class="text-center mb-4">Cadastro</h3>
+
+    <form method="post">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+    </form>
+
+    <?php
+      if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        require_once('conexao.php');
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+        try{
+          $stmt = $pdo->prepare('INSERT INTO usuario (nome, email, senha)
+                                  VALUES (? , ?, ?);');
+          if($stmt->execute([$nome, $email, $senha])){
+            echo "<p>Cadastro realizado! Faça o login!</p>";
+          } else {
+            echo "<p>Erro ao cadastrar! Tente novamente</p>";
+          }
+        } catch(Exception $e){
+          echo "Erro: ".$e->getMessage();
+        }
+      }
+    ?>
+
+    <p class="text-center mt-3">
+      Já tem conta? <a href="index.php">Faça login</a>
+    </p>
+  </div>
 </div>
 
 </body>
